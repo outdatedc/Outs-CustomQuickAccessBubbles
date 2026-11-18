@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>CustomQuickAccessBubbles.Quest</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="QuickAccessBubbleColorsQuest.cs" />
+    <Reference Include="$(QuestReferences)\*.dll">
+      <Private>false</Private>
+    </Reference>
+    <EmbeddedResource Include="CustomizeB.png" LogicalName="CustomQuickAccessBubbles.CustomizeB.png" />
+  </ItemGroup>
+  <Target Name="CheckQuestReferences" BeforeTargets="ResolveReferences" Condition="'$(QuestReferences)' == ''">
+    <Error Text="Set QuestReferences to the directory containing the APK's generated assemblies, loader, and Quest TabletUILib." />
+  </Target>
+</Project>
+
